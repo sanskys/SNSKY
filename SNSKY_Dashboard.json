@@ -575,11 +575,19 @@
           "interval": "",
           "legendFormat": "",
           "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "adapools_total_stake{alias=\"relaynode1\"}/1000000000",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "",
+          "refId": "B"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Active Stake",
+      "title": "Active & Live Stk",
       "type": "stat"
     },
     {
@@ -648,6 +656,14 @@
         },
         {
           "exemplar": true,
+          "expr": "100 - ((node_filesystem_avail_bytes{mountpoint=\"/\",fstype!=\"rootfs\",alias=\"block-producer-node\"} * 100) / node_filesystem_size_bytes{mountpoint=\"/\",fstype!=\"rootfs\",alias=\"block-producer-node\"})",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "Disk",
+          "refId": "F"
+        },
+        {
+          "exemplar": true,
           "expr": "(1 - (node_memory_MemAvailable_bytes{alias=\"block-producer-node\"} / (node_memory_MemTotal_bytes{alias=\"block-producer-node\"})))* 100",
           "hide": false,
           "instant": false,
@@ -663,14 +679,6 @@
           "interval": "",
           "legendFormat": "SWAP",
           "refId": "E"
-        },
-        {
-          "exemplar": true,
-          "expr": "100 - ((node_filesystem_avail_bytes{mountpoint=\"/\",fstype!=\"rootfs\",alias=\"block-producer-node\"} * 100) / node_filesystem_size_bytes{mountpoint=\"/\",fstype!=\"rootfs\",alias=\"block-producer-node\"})",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "Disk",
-          "refId": "F"
         }
       ],
       "timeFrom": null,
@@ -920,7 +928,7 @@
     },
     {
       "datasource": "Prometheus",
-      "description": "in ADA",
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "mappings": [],
@@ -930,14 +938,6 @@
               {
                 "color": "semi-dark-blue",
                 "value": null
-              },
-              {
-                "color": "#6ED0E0",
-                "value": 100000
-              },
-              {
-                "color": "dark-green",
-                "value": 1000000
               }
             ]
           },
@@ -951,7 +951,7 @@
         "x": 0,
         "y": 5
       },
-      "id": 147,
+      "id": 144,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -965,21 +965,21 @@
           "values": false
         },
         "text": {},
-        "textMode": "value"
+        "textMode": "auto"
       },
       "pluginVersion": "7.5.4",
       "targets": [
         {
           "exemplar": true,
-          "expr": "adapools_total_stake{alias=\"relaynode1\"}/1000000000",
+          "expr": "adapools_pledged{alias=\"relaynode1\"}/1000000",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "ADA",
           "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Live Stake",
+      "title": "Pledged (ADA)",
       "type": "stat"
     },
     {
@@ -1064,8 +1064,16 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "semi-dark-blue",
+                "color": "dark-blue",
                 "value": null
+              },
+              {
+                "color": "super-light-green",
+                "value": 10
+              },
+              {
+                "color": "dark-green",
+                "value": 100
               }
             ]
           },
@@ -1079,7 +1087,7 @@
         "x": 0,
         "y": 7
       },
-      "id": 144,
+      "id": 153,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -1099,15 +1107,22 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "adapools_pledge{alias=\"relaynode1\"}/1000000",
+          "expr": "adapools_delegators{alias=\"relaynode1\"}",
           "interval": "",
-          "legendFormat": "ADA",
+          "legendFormat": "Delegators",
           "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "adapools_owners",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Owners",
+          "refId": "B"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Pledged (ADA)",
       "type": "stat"
     },
     {
@@ -1252,8 +1267,16 @@
           "expr": "100 - (avg by(alias) (irate(node_cpu_seconds_total{mode=\"idle\",alias=\"relaynode1\"}[1m])) * 100)",
           "instant": false,
           "interval": "",
-          "legendFormat": "CPU",
+          "legendFormat": "CPU R1",
           "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "100 - ((node_filesystem_avail_bytes{mountpoint=\"/\",fstype!=\"rootfs\",alias=\"relaynode1\"} * 100) / node_filesystem_size_bytes{mountpoint=\"/\",fstype!=\"rootfs\",alias=\"relaynode1\"})",
+          "instant": false,
+          "interval": "",
+          "legendFormat": "Disk R1",
+          "refId": "F"
         },
         {
           "exemplar": true,
@@ -1261,7 +1284,7 @@
           "hide": false,
           "instant": false,
           "interval": "",
-          "legendFormat": "RAM",
+          "legendFormat": "RAM R1",
           "refId": "B"
         },
         {
@@ -1270,16 +1293,40 @@
           "hide": false,
           "instant": false,
           "interval": "",
-          "legendFormat": "SWAP",
+          "legendFormat": "SWAP R1",
           "refId": "E"
         },
         {
           "exemplar": true,
-          "expr": "100 - ((node_filesystem_avail_bytes{mountpoint=\"/\",fstype!=\"rootfs\",alias=\"relaynode1\"} * 100) / node_filesystem_size_bytes{mountpoint=\"/\",fstype!=\"rootfs\",alias=\"relaynode1\"})",
-          "instant": false,
+          "expr": "100 - (avg by(alias) (irate(node_cpu_seconds_total{mode=\"idle\",alias=\"relaynode2\"}[1m])) * 100)",
+          "hide": false,
           "interval": "",
-          "legendFormat": "Disk",
-          "refId": "F"
+          "legendFormat": "CPU R2",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "100 - ((node_filesystem_avail_bytes{mountpoint=\"/\",fstype!=\"rootfs\",alias=\"relaynode2\"} * 100) / node_filesystem_size_bytes{mountpoint=\"/\",fstype!=\"rootfs\",alias=\"relaynode2\"})",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Disk R2",
+          "refId": "H"
+        },
+        {
+          "exemplar": true,
+          "expr": "(1 - (node_memory_MemAvailable_bytes{alias=\"relaynode2\"} / (node_memory_MemTotal_bytes{alias=\"relaynode2\"})))* 100",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "RAM R2",
+          "refId": "D"
+        },
+        {
+          "exemplar": true,
+          "expr": "(1 - (node_memory_SwapFree_bytes{alias=\"relaynode1\"} / node_memory_SwapTotal_bytes{alias=\"relaynode1\"})) * 100",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "SWAP R2",
+          "refId": "G"
         }
       ],
       "timeFrom": null,
@@ -1358,9 +1405,17 @@
           "instant": true,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "{{alias}}",
+          "legendFormat": "Relay1",
           "refId": "A",
           "step": 20
+        },
+        {
+          "exemplar": true,
+          "expr": "cardano_node_metrics_connectedPeers_int{alias=\"relaynode2\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay2",
+          "refId": "B"
         }
       ],
       "title": "Peers (Relay)",
@@ -1434,8 +1489,17 @@
           "hide": false,
           "instant": true,
           "interval": "",
-          "legendFormat": "Relay",
+          "legendFormat": "Relay1",
           "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "cardano_node_metrics_txsProcessedNum_int{alias=\"relaynode2\"}",
+          "hide": false,
+          "instant": true,
+          "interval": "",
+          "legendFormat": "Relay2",
+          "refId": "B"
         }
       ],
       "timeFrom": null,
@@ -1521,9 +1585,17 @@
           "instant": true,
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "",
+          "legendFormat": "Relay1",
           "refId": "A",
           "step": 40
+        },
+        {
+          "exemplar": true,
+          "expr": "rts_gc_wall_ms{alias=\"relaynode2\"} / (1000)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay2",
+          "refId": "B"
         }
       ],
       "title": "Uptime",
@@ -1582,15 +1654,22 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "adapools_delegators{alias=\"relaynode1\"}",
+          "expr": "adapools_rewards_epoch",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "Rewards",
           "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "adapools_roa_lifetime",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "RoA",
+          "refId": "B"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Delegators",
       "type": "stat"
     },
     {
@@ -1653,13 +1732,20 @@
           "expr": "adapools_rank{alias=\"relaynode1\"}",
           "instant": false,
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "Rank",
           "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "adapools_blocks_lifetime",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Lifetime Blocks",
+          "refId": "B"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Pool Rank",
       "type": "stat"
     },
     {
@@ -1728,6 +1814,14 @@
           "interval": "",
           "legendFormat": "Relay",
           "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "cardano_node_metrics_density_real{alias=\"relaynode2\"} * 100",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay",
+          "refId": "C"
         }
       ],
       "thresholds": [],
@@ -1853,8 +1947,16 @@
           "exemplar": true,
           "expr": "cardano_node_metrics_blockNum_int{alias=\"relaynode1\"}",
           "interval": "",
-          "legendFormat": "Relay",
+          "legendFormat": "Relay1",
           "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "cardano_node_metrics_blockNum_int{alias=\"relaynode2\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay2",
+          "refId": "C"
         }
       ],
       "thresholds": [],
@@ -1967,8 +2069,16 @@
           "expr": "cardano_node_metrics_slotNum_int{alias=\"relaynode1\"}",
           "hide": false,
           "interval": "",
-          "legendFormat": "Relay",
+          "legendFormat": "Relay1",
           "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "cardano_node_metrics_slotNum_int{alias=\"relaynode2\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay2",
+          "refId": "C"
         }
       ],
       "thresholds": [],
@@ -2236,7 +2346,7 @@
           "format": "time_series",
           "interval": "",
           "intervalFactor": 3,
-          "legendFormat": "Load 1m",
+          "legendFormat": "R1 Load 1m",
           "refId": "A",
           "step": 480
         },
@@ -2246,19 +2356,41 @@
           "format": "time_series",
           "interval": "",
           "intervalFactor": 3,
-          "legendFormat": "Load 5m",
+          "legendFormat": "R1 Load 5m",
           "refId": "B",
           "step": 480
         },
         {
           "exemplar": true,
           "expr": "node_load15{alias=\"relaynode1\"}*100",
-          "format": "time_series",
+          "hide": false,
           "interval": "",
-          "intervalFactor": 3,
-          "legendFormat": "Load 15m",
-          "refId": "C",
-          "step": 480
+          "legendFormat": "R1 Load 15m",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "node_load1{alias=\"relaynode2\"}*100",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "R2 Load 1m",
+          "refId": "D"
+        },
+        {
+          "exemplar": true,
+          "expr": "node_load5{alias=\"relaynode2\"}*100",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "R2 Load 5m",
+          "refId": "E"
+        },
+        {
+          "exemplar": true,
+          "expr": "node_load15{alias=\"relaynode2\"}*100",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "R2 Load 15m",
+          "refId": "F"
         }
       ],
       "thresholds": [],
@@ -2376,7 +2508,9 @@
       "decimals": 0,
       "description": "",
       "fieldConfig": {
-        "defaults": {},
+        "defaults": {
+          "links": []
+        },
         "overrides": []
       },
       "fill": 1,
@@ -2435,6 +2569,14 @@
           "interval": "",
           "legendFormat": "Relay",
           "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "cardano_node_metrics_connectedPeers_int{alias=\"relaynode2\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay2",
+          "refId": "C"
         }
       ],
       "thresholds": [],
@@ -2540,8 +2682,16 @@
           "expr": "rate (cardano_node_metrics_blockNum_int{alias=\"relaynode1\"}[150s]) *60",
           "hide": false,
           "interval": "",
-          "legendFormat": "Relay",
+          "legendFormat": "Relay1",
           "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "rate (cardano_node_metrics_blockNum_int{alias=\"relaynode2\"}[150s]) *60",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay2",
+          "refId": "C"
         }
       ],
       "thresholds": [],
@@ -2952,8 +3102,16 @@
           "expr": "(1 - (node_memory_MemAvailable_bytes{alias=\"relaynode1\"} / (node_memory_MemTotal_bytes{alias=\"relaynode1\"})))* 100",
           "hide": false,
           "interval": "",
-          "legendFormat": "Relay",
+          "legendFormat": "Relay1",
           "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "(1 - (node_memory_MemAvailable_bytes{alias=\"relaynode2\"} / (node_memory_MemTotal_bytes{alias=\"relaynode2\"})))* 100",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay2",
+          "refId": "C"
         }
       ],
       "thresholds": [],
@@ -3060,8 +3218,16 @@
           "expr": "rts_gc_peak_megabytes_allocated{alias=\"relaynode1\"}",
           "hide": false,
           "interval": "",
-          "legendFormat": "Relay",
+          "legendFormat": "Relay1",
           "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "rts_gc_peak_megabytes_allocated{alias=\"relaynode2\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay2",
+          "refId": "C"
         }
       ],
       "thresholds": [],
@@ -3169,8 +3335,16 @@
           "expr": "cardano_node_metrics_txsInMempool_int{alias=\"relaynode1\"}",
           "hide": false,
           "interval": "",
-          "legendFormat": "Relay",
+          "legendFormat": "Relay2",
           "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "cardano_node_metrics_txsInMempool_int{alias=\"relaynode2\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay2",
+          "refId": "C"
         }
       ],
       "thresholds": [],
@@ -3278,8 +3452,16 @@
           "expr": "rts_gc_current_bytes_used{alias=\"relaynode1\"}/(1024*1024)",
           "hide": false,
           "interval": "",
-          "legendFormat": "Relay",
+          "legendFormat": "Relay1",
           "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "rts_gc_current_bytes_used{alias=\"relaynode2\"}/(1024*1024)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay2",
+          "refId": "C"
         }
       ],
       "thresholds": [],
@@ -3386,8 +3568,16 @@
           "expr": "sum(rate(node_network_receive_bytes_total{alias=\"relaynode1\"}[1h])) * 3600",
           "hide": false,
           "interval": "",
-          "legendFormat": "Relay",
+          "legendFormat": "Relay1",
           "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(rate(node_network_receive_bytes_total{alias=\"relaynode2\"}[1h])) * 3600",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay2",
+          "refId": "C"
         }
       ],
       "thresholds": [],
@@ -3496,8 +3686,16 @@
           "expr": "rts_gc_max_bytes_used{alias=\"relaynode1\"} /(1024*1024)",
           "hide": false,
           "interval": "",
-          "legendFormat": "Relay",
+          "legendFormat": "Relay1",
           "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "rts_gc_max_bytes_used{alias=\"relaynode2\"} /(1024*1024)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay2",
+          "refId": "C"
         }
       ],
       "thresholds": [],
@@ -3605,8 +3803,16 @@
           "expr": "node_filefd_allocated{alias=\"relaynode1\"}",
           "hide": false,
           "interval": "",
-          "legendFormat": "Relay",
+          "legendFormat": "Relay1",
           "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "node_filefd_allocated{alias=\"relaynode2\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay2",
+          "refId": "C"
         }
       ],
       "thresholds": [],
@@ -3714,8 +3920,16 @@
           "expr": "(cardano_node_metrics_Mem_resident_int{alias=\"relaynode1\"}*4096)/(1024*1024)",
           "hide": false,
           "interval": "",
-          "legendFormat": "Relay",
+          "legendFormat": "Relay1",
           "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "(cardano_node_metrics_Mem_resident_int{alias=\"relaynode2\"}*4096)/(1024*1024)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay2",
+          "refId": "C"
         }
       ],
       "thresholds": [],
@@ -3801,5 +4015,5 @@
   "timezone": "",
   "title": "SNSKY Pool",
   "uid": "SNSKY",
-  "version": 7
+  "version": 22
 }
