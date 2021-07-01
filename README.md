@@ -1,3 +1,5 @@
+A more readable Version of Tutorial is here - www.sanskys.de/dashboard
+
 Once you have sucessfully set-up a Cardano pool, then comes the most beautifull part - setting up your Dashboard and Alerts! You surely dont want to gaze the PC whole day, or?
 
  
