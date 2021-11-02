@@ -401,7 +401,7 @@ $ crontab -e
 
 #Get data from ADApools every day at 06:00
 
-0 6 * * * <YOUR NODE FULL PATH >/adapools/getstats.sh
+0 6 * * * <YOUR NODE FULL PATH >/poolStat/getstats.sh
 
 ##############################
 
