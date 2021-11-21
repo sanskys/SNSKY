@@ -441,7 +441,9 @@ If everything works, now you should have a smile on your face! And if you wish t
 
 Donation Address
 **addr1qyyhd8cpv4gmhr5axerhezhtzldrw4rp9ayf0fc6arnme4cg46du2qg366943uy0dw5yjmna7arfw265lu4r2fjccl4scf7xrw**
+
 SNSKY Pool ID
+
 **075578defd7ee97cbeaa2937e5819099cb3835ac9f9c8b1a2c3a3578**
 
 ---
