@@ -8,6 +8,12 @@
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
@@ -168,7 +174,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "targets": [
         {
           "exemplar": true,
@@ -267,7 +273,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "targets": [
         {
           "exemplar": true,
@@ -343,7 +349,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "targets": [
         {
           "exemplar": true,
@@ -419,7 +425,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "targets": [
         {
           "exemplar": true,
@@ -496,7 +502,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "targets": [
         {
           "exemplar": true,
@@ -555,7 +561,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "targets": [
         {
           "exemplar": true,
@@ -618,7 +624,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "targets": [
         {
           "exemplar": true,
@@ -687,7 +693,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "targets": [
         {
           "exemplar": true,
@@ -780,7 +786,7 @@
       "maxDataPoints": 100,
       "options": {
         "colorMode": "background",
-        "graphMode": "none",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -793,13 +799,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "targets": [
         {
           "exemplar": true,
           "expr": "cardano_node_metrics_connectedPeers_int{alias=\"block-producer-node\"}",
           "format": "time_series",
-          "instant": true,
+          "instant": false,
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{alias}}",
@@ -871,7 +877,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "targets": [
         {
           "expr": "cardano_node_metrics_txsProcessedNum_int{alias=\"block-producer-node\"}",
@@ -957,7 +963,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "targets": [
         {
           "exemplar": true,
@@ -976,7 +982,7 @@
       "type": "stat"
     },
     {
-      "datasource": "pooldata.live",
+      "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1037,13 +1043,14 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "targets": [
         {
-          "data": "",
-          "refId": "A",
-          "target": "pool.livestake",
-          "type": "timeseries"
+          "exemplar": true,
+          "expr": "adapools_active_stake/1000000",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
         }
       ],
       "timeFrom": null,
@@ -1052,7 +1059,7 @@
       "type": "stat"
     },
     {
-      "datasource": "pooldata.live",
+      "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1083,7 +1090,7 @@
         "x": 4,
         "y": 5
       },
-      "id": 156,
+      "id": 157,
       "options": {
         "colorMode": "value",
         "graphMode": "none",
@@ -1099,22 +1106,23 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "targets": [
         {
-          "data": "",
-          "refId": "A",
-          "target": "pool.blocks_minted",
-          "type": "timeseries"
+          "exemplar": true,
+          "expr": "adapools_blocks_epoch",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
         }
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Blocks Minted",
+      "title": "Blocks Epoch",
       "type": "stat"
     },
     {
-      "datasource": "pooldata.live",
+      "datasource": null,
       "fieldConfig": {
         "defaults": {
           "mappings": [],
@@ -1161,13 +1169,14 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "targets": [
         {
-          "data": "",
-          "refId": "A",
-          "target": "pool.delegators",
-          "type": "timeseries"
+          "exemplar": true,
+          "expr": "adapools_delegators",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
         }
       ],
       "timeFrom": null,
@@ -1207,7 +1216,7 @@
         "x": 4,
         "y": 7
       },
-      "id": 157,
+      "id": 156,
       "options": {
         "colorMode": "value",
         "graphMode": "none",
@@ -1223,11 +1232,11 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "targets": [
         {
           "exemplar": true,
-          "expr": "cardano_node_metrics_Forge_forge_about_to_lead_int{alias=\"block-producer-node\"} - cardano_node_metrics_Forge_node_not_leader_int{alias=\"block-producer-node\"}",
+          "expr": "adapools_blocks_lifetime",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -1235,7 +1244,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Blocks Assigned",
+      "title": "Blocks Minted",
       "type": "stat"
     },
     {
@@ -1272,7 +1281,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 8,
         "x": 8,
         "y": 7
@@ -1292,7 +1301,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "targets": [
         {
           "exemplar": true,
@@ -1470,7 +1479,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 3,
         "x": 16,
         "y": 7
@@ -1481,7 +1490,7 @@
       "maxDataPoints": 100,
       "options": {
         "colorMode": "background",
-        "graphMode": "none",
+        "graphMode": "area",
         "justifyMode": "auto",
         "orientation": "horizontal",
         "reduceOptions": {
@@ -1494,7 +1503,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "targets": [
         {
           "exemplar": true,
@@ -1568,7 +1577,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 3,
         "x": 19,
         "y": 7
@@ -1597,7 +1606,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "targets": [
         {
           "exemplar": true,
@@ -1679,7 +1688,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 7,
+        "h": 8,
         "w": 2,
         "x": 22,
         "y": 7
@@ -1709,7 +1718,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "targets": [
         {
           "exemplar": true,
@@ -1752,7 +1761,7 @@
       "type": "stat"
     },
     {
-      "datasource": "pooldata.live",
+      "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1774,7 +1783,7 @@
               }
             ]
           },
-          "unit": "locale"
+          "unit": "percent"
         },
         "overrides": []
       },
@@ -1800,13 +1809,14 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "targets": [
         {
-          "data": "",
-          "refId": "A",
-          "target": "pool.roa_total",
-          "type": "timeseries"
+          "exemplar": true,
+          "expr": "adapools_roa",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
         }
       ],
       "timeFrom": null,
@@ -1815,7 +1825,7 @@
       "type": "stat"
     },
     {
-      "datasource": "pooldata.live",
+      "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1867,13 +1877,14 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "targets": [
         {
-          "data": "",
-          "refId": "A",
-          "target": "pool.ranking",
-          "type": "timeseries"
+          "exemplar": true,
+          "expr": "adapools_rank",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
         }
       ],
       "timeFrom": null,
@@ -1920,7 +1931,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
+        "h": 4,
         "w": 8,
         "x": 0,
         "y": 11
@@ -1929,7 +1940,7 @@
       "options": {
         "showHeader": true
       },
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "targets": [
         {
           "data": "",
@@ -1963,7 +1974,7 @@
         "h": 5,
         "w": 8,
         "x": 0,
-        "y": 14
+        "y": 15
       },
       "hiddenSeries": false,
       "id": 18,
@@ -1986,7 +1997,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2100,7 +2111,7 @@
         "h": 5,
         "w": 8,
         "x": 8,
-        "y": 14
+        "y": 15
       },
       "hiddenSeries": false,
       "id": 97,
@@ -2123,7 +2134,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2236,7 +2247,7 @@
         "h": 5,
         "w": 8,
         "x": 16,
-        "y": 14
+        "y": 15
       },
       "hiddenSeries": false,
       "id": 80,
@@ -2259,7 +2270,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2370,10 +2381,10 @@
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
+        "h": 6,
         "w": 12,
         "x": 0,
-        "y": 19
+        "y": 20
       },
       "hiddenSeries": false,
       "id": 51,
@@ -2396,7 +2407,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2516,10 +2527,10 @@
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
+        "h": 6,
         "w": 12,
         "x": 12,
-        "y": 19
+        "y": 20
       },
       "hiddenSeries": false,
       "id": 90,
@@ -2542,7 +2553,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2731,10 +2742,10 @@
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
+        "h": 5,
         "w": 12,
         "x": 0,
-        "y": 28
+        "y": 26
       },
       "hiddenSeries": false,
       "id": 47,
@@ -2756,7 +2767,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2882,10 +2893,10 @@
       "fill": 2,
       "fillGradient": 0,
       "gridPos": {
-        "h": 9,
+        "h": 5,
         "w": 12,
         "x": 12,
-        "y": 28
+        "y": 26
       },
       "hiddenSeries": false,
       "id": 94,
@@ -2907,7 +2918,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2978,7 +2989,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Time Synchronization (Relay Node)",
+      "title": "Time Synchronization (Relay1 Node)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -3036,10 +3047,10 @@
         "h": 5,
         "w": 12,
         "x": 0,
-        "y": 37
+        "y": 31
       },
       "hiddenSeries": false,
-      "id": 155,
+      "id": 160,
       "legend": {
         "alignAsTable": true,
         "avg": true,
@@ -3058,7 +3069,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3093,7 +3104,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "node_timex_estimated_error_seconds{alias=\"relaynode3\"}",
+          "expr": "node_timex_estimated_error_seconds{alias=\"relaynode2\"}",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -3104,7 +3115,7 @@
         },
         {
           "exemplar": true,
-          "expr": "node_timex_offset_seconds{alias=\"relaynode3\"}",
+          "expr": "node_timex_offset_seconds{alias=\"relaynode2\"}",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -3115,7 +3126,7 @@
         },
         {
           "exemplar": true,
-          "expr": "node_timex_maxerror_seconds{alias=\"relaynode3\"}",
+          "expr": "node_timex_maxerror_seconds{alias=\"relaynode2\"}",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -3129,7 +3140,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Time Synchronization (Relay3 Node)",
+      "title": "Time Synchronization (Relay2 Node)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -3161,424 +3172,6 @@
           "max": null,
           "min": null,
           "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 2,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 10,
-        "w": 12,
-        "x": 12,
-        "y": 37
-      },
-      "hiddenSeries": false,
-      "id": 158,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.0.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "$$hashKey": "object:676",
-          "alias": "/.*Variation*./",
-          "color": "#890F02"
-        },
-        {
-          "$$hashKey": "object:677",
-          "alias": "Max. Error (s)",
-          "color": "#FFB357",
-          "fillGradient": 10
-        },
-        {
-          "$$hashKey": "object:678",
-          "alias": "Est. error(s)",
-          "color": "#FFEE52",
-          "fill": 10
-        },
-        {
-          "$$hashKey": "object:679",
-          "alias": "Offset: Node vs. Ref.",
-          "color": "#8F3BB8",
-          "fillGradient": 7
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "node_timex_estimated_error_seconds{alias=\"relaynode4\"}",
-          "format": "time_series",
-          "hide": false,
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "Est. error(s)",
-          "refId": "B",
-          "step": 240
-        },
-        {
-          "exemplar": true,
-          "expr": "node_timex_offset_seconds{alias=\"relaynode4\"}",
-          "format": "time_series",
-          "hide": false,
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "Offset: Node vs. Ref.",
-          "refId": "A",
-          "step": 240
-        },
-        {
-          "exemplar": true,
-          "expr": "node_timex_maxerror_seconds{alias=\"relaynode4\"}",
-          "format": "time_series",
-          "hide": false,
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "Max. Error (s)",
-          "refId": "C",
-          "step": 240
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Time Synchronization (Relay4 Node)",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:710",
-          "format": "s",
-          "label": "Seconds",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:711",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 5,
-        "w": 12,
-        "x": 0,
-        "y": 42
-      },
-      "hiddenSeries": false,
-      "id": 24,
-      "interval": "",
-      "legend": {
-        "avg": false,
-        "current": true,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.0.2",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "(1 - (node_memory_MemAvailable_bytes{alias=\"block-producer-node\"} / (node_memory_MemTotal_bytes{alias=\"block-producer-node\"})))* 100",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Core",
-          "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "(1 - (node_memory_MemAvailable_bytes{alias=\"relaynode1\"} / (node_memory_MemTotal_bytes{alias=\"relaynode1\"})))* 100",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Relay1",
-          "refId": "B"
-        },
-        {
-          "exemplar": true,
-          "expr": "(1 - (node_memory_MemAvailable_bytes{alias=\"relaynode2\"} / (node_memory_MemTotal_bytes{alias=\"relaynode2\"})))* 100",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Relay2",
-          "refId": "C"
-        },
-        {
-          "exemplar": true,
-          "expr": "(1 - (node_memory_MemAvailable_bytes{alias=\"relaynode3\"} / (node_memory_MemTotal_bytes{alias=\"relaynode3\"})))* 100",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Relay3",
-          "refId": "D"
-        },
-        {
-          "exemplar": true,
-          "expr": "(1 - (node_memory_MemAvailable_bytes{alias=\"relaynode4\"} / (node_memory_MemTotal_bytes{alias=\"relaynode4\"})))* 100",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Relay4",
-          "refId": "E"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Memory Utilization ",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:807",
-          "decimals": 1,
-          "format": "%",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:808",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus",
-      "description": "current",
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 5,
-        "w": 12,
-        "x": 0,
-        "y": 47
-      },
-      "hiddenSeries": false,
-      "id": 59,
-      "legend": {
-        "avg": false,
-        "current": true,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.0.2",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": "Prometheus",
-          "exemplar": true,
-          "expr": "cardano_node_metrics_txsInMempool_int{alias=\"block-producer-node\"}",
-          "interval": "",
-          "legendFormat": "Core",
-          "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "cardano_node_metrics_txsInMempool_int{alias=\"relaynode1\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Relay2",
-          "refId": "B"
-        },
-        {
-          "exemplar": true,
-          "expr": "",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Relay2",
-          "refId": "C"
-        },
-        {
-          "exemplar": true,
-          "expr": "cardano_node_metrics_txsInMempool_int{alias=\"relaynode3\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Relay3",
-          "refId": "D"
-        },
-        {
-          "exemplar": true,
-          "expr": "cardano_node_metrics_txsInMempool_int{alias=\"relaynode4\"}",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Relay4",
-          "refId": "E"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Mempool Transactions",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:1163",
-          "decimals": 0,
-          "format": "tx",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:1164",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
         }
       ],
       "yaxis": {
@@ -3604,7 +3197,7 @@
         "h": 5,
         "w": 12,
         "x": 12,
-        "y": 47
+        "y": 31
       },
       "hiddenSeries": false,
       "id": 28,
@@ -3624,7 +3217,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3736,10 +3329,11 @@
         "h": 5,
         "w": 12,
         "x": 0,
-        "y": 52
+        "y": 36
       },
       "hiddenSeries": false,
-      "id": 37,
+      "id": 24,
+      "interval": "",
       "legend": {
         "avg": false,
         "current": true,
@@ -3756,7 +3350,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3766,16 +3360,16 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "Prometheus",
           "exemplar": true,
-          "expr": "rts_gc_current_bytes_used{alias=\"block-producer-node\"}/(1024*1024)",
+          "expr": "(1 - (node_memory_MemAvailable_bytes{alias=\"block-producer-node\"} / (node_memory_MemTotal_bytes{alias=\"block-producer-node\"})))* 100",
+          "hide": false,
           "interval": "",
           "legendFormat": "Core",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "rts_gc_current_bytes_used{alias=\"relaynode1\"}/(1024*1024)",
+          "expr": "(1 - (node_memory_MemAvailable_bytes{alias=\"relaynode1\"} / (node_memory_MemTotal_bytes{alias=\"relaynode1\"})))* 100",
           "hide": false,
           "interval": "",
           "legendFormat": "Relay1",
@@ -3783,7 +3377,7 @@
         },
         {
           "exemplar": true,
-          "expr": "rts_gc_current_bytes_used{alias=\"relaynode2\"}/(1024*1024)",
+          "expr": "(1 - (node_memory_MemAvailable_bytes{alias=\"relaynode2\"} / (node_memory_MemTotal_bytes{alias=\"relaynode2\"})))* 100",
           "hide": false,
           "interval": "",
           "legendFormat": "Relay2",
@@ -3791,7 +3385,7 @@
         },
         {
           "exemplar": true,
-          "expr": "rts_gc_current_bytes_used{alias=\"relaynode3\"}/(1024*1024)",
+          "expr": "(1 - (node_memory_MemAvailable_bytes{alias=\"relaynode3\"} / (node_memory_MemTotal_bytes{alias=\"relaynode3\"})))* 100",
           "hide": false,
           "interval": "",
           "legendFormat": "Relay3",
@@ -3799,7 +3393,7 @@
         },
         {
           "exemplar": true,
-          "expr": "rts_gc_current_bytes_used{alias=\"relaynode4\"}/(1024*1024)",
+          "expr": "(1 - (node_memory_MemAvailable_bytes{alias=\"relaynode4\"} / (node_memory_MemTotal_bytes{alias=\"relaynode4\"})))* 100",
           "hide": false,
           "interval": "",
           "legendFormat": "Relay4",
@@ -3810,7 +3404,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Current \"Residency\" (amount of live data)",
+      "title": "Memory Utilization ",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -3826,8 +3420,9 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:1334",
-          "format": "decmbytes",
+          "$$hashKey": "object:807",
+          "decimals": 1,
+          "format": "%",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -3835,7 +3430,7 @@
           "show": true
         },
         {
-          "$$hashKey": "object:1335",
+          "$$hashKey": "object:808",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -3868,7 +3463,7 @@
         "h": 5,
         "w": 12,
         "x": 12,
-        "y": 52
+        "y": 36
       },
       "hiddenSeries": false,
       "id": 135,
@@ -3888,7 +3483,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3987,6 +3582,521 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
+      "description": "current",
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 0,
+        "y": 41
+      },
+      "hiddenSeries": false,
+      "id": 59,
+      "legend": {
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.1.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": "Prometheus",
+          "exemplar": true,
+          "expr": "cardano_node_metrics_txsInMempool_int{alias=\"block-producer-node\"}",
+          "interval": "",
+          "legendFormat": "Core",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "cardano_node_metrics_txsInMempool_int{alias=\"relaynode1\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay2",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay2",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "cardano_node_metrics_txsInMempool_int{alias=\"relaynode3\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay3",
+          "refId": "D"
+        },
+        {
+          "exemplar": true,
+          "expr": "cardano_node_metrics_txsInMempool_int{alias=\"relaynode4\"}",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay4",
+          "refId": "E"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Mempool Transactions",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1163",
+          "decimals": 0,
+          "format": "tx",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1164",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "Amount of live data, MBytes",
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 12,
+        "y": 41
+      },
+      "hiddenSeries": false,
+      "id": 32,
+      "legend": {
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.1.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": "Prometheus",
+          "exemplar": true,
+          "expr": "rts_gc_max_bytes_used{alias=\"block-producer-node\"} /(1024*1024)",
+          "interval": "",
+          "legendFormat": "Core",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "rts_gc_max_bytes_used{alias=\"relaynode1\"} /(1024*1024)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay1",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "rts_gc_max_bytes_used{alias=\"relaynode2\"} /(1024*1024)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay2",
+          "refId": "C"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Max \"Residency\"",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1682",
+          "format": "decmbytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1683",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 0,
+        "y": 46
+      },
+      "hiddenSeries": false,
+      "id": 37,
+      "legend": {
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.1.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": "Prometheus",
+          "exemplar": true,
+          "expr": "rts_gc_current_bytes_used{alias=\"block-producer-node\"}/(1024*1024)",
+          "interval": "",
+          "legendFormat": "Core",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "rts_gc_current_bytes_used{alias=\"relaynode1\"}/(1024*1024)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay1",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "rts_gc_current_bytes_used{alias=\"relaynode2\"}/(1024*1024)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay2",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "rts_gc_current_bytes_used{alias=\"relaynode3\"}/(1024*1024)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay3",
+          "refId": "D"
+        },
+        {
+          "exemplar": true,
+          "expr": "rts_gc_current_bytes_used{alias=\"relaynode4\"}/(1024*1024)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay4",
+          "refId": "E"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Current \"Residency\" (amount of live data)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:1334",
+          "format": "decmbytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:1335",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "decimals": 0,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "links": []
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 12,
+        "x": 12,
+        "y": 46
+      },
+      "hiddenSeries": false,
+      "id": 30,
+      "legend": {
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "8.1.2",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": "Prometheus",
+          "exemplar": true,
+          "expr": "(cardano_node_metrics_Mem_resident_int{alias=\"block-producer-node\"}*4096)/(1024*1024)",
+          "interval": "",
+          "legendFormat": "Core",
+          "refId": "A"
+        },
+        {
+          "exemplar": true,
+          "expr": "(cardano_node_metrics_Mem_resident_int{alias=\"relaynode1\"}*4096)/(1024*1024)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay1",
+          "refId": "B"
+        },
+        {
+          "exemplar": true,
+          "expr": "(cardano_node_metrics_Mem_resident_int{alias=\"relaynode2\"}*4096)/(1024*1024)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay2",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "(cardano_node_metrics_Mem_resident_int{alias=\"relaynode3\"}*4096)/(1024*1024)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay3",
+          "refId": "D"
+        },
+        {
+          "exemplar": true,
+          "expr": "(cardano_node_metrics_Mem_resident_int{alias=\"relaynode4\"}*4096)/(1024*1024)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Relay4",
+          "refId": "E"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "RSS (allocated memory in RAM)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:2022",
+          "decimals": 2,
+          "format": "decmbytes",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:2023",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
       "description": "1 hour rolling window",
       "fieldConfig": {
         "defaults": {
@@ -4000,7 +4110,7 @@
         "h": 5,
         "w": 12,
         "x": 0,
-        "y": 57
+        "y": 51
       },
       "hiddenSeries": false,
       "id": 63,
@@ -4021,7 +4131,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -4121,122 +4231,6 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "description": "Amount of live data, MBytes",
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 5,
-        "w": 12,
-        "x": 12,
-        "y": 57
-      },
-      "hiddenSeries": false,
-      "id": 32,
-      "legend": {
-        "avg": false,
-        "current": true,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.0.2",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": "Prometheus",
-          "exemplar": true,
-          "expr": "rts_gc_max_bytes_used{alias=\"block-producer-node\"} /(1024*1024)",
-          "interval": "",
-          "legendFormat": "Core",
-          "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "rts_gc_max_bytes_used{alias=\"relaynode1\"} /(1024*1024)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Relay1",
-          "refId": "B"
-        },
-        {
-          "exemplar": true,
-          "expr": "rts_gc_max_bytes_used{alias=\"relaynode2\"} /(1024*1024)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Relay2",
-          "refId": "C"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Max \"Residency\"",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:1682",
-          "format": "decmbytes",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:1683",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -4249,8 +4243,8 @@
       "gridPos": {
         "h": 5,
         "w": 12,
-        "x": 0,
-        "y": 62
+        "x": 12,
+        "y": 51
       },
       "hiddenSeries": false,
       "id": 64,
@@ -4271,7 +4265,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.0.2",
+      "pluginVersion": "8.1.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -4363,140 +4357,6 @@
         "align": false,
         "alignLevel": null
       }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Prometheus",
-      "decimals": 0,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "links": []
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 5,
-        "w": 12,
-        "x": 12,
-        "y": 62
-      },
-      "hiddenSeries": false,
-      "id": 30,
-      "legend": {
-        "avg": false,
-        "current": true,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "8.0.2",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": "Prometheus",
-          "exemplar": true,
-          "expr": "(cardano_node_metrics_Mem_resident_int{alias=\"block-producer-node\"}*4096)/(1024*1024)",
-          "interval": "",
-          "legendFormat": "Core",
-          "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "(cardano_node_metrics_Mem_resident_int{alias=\"relaynode1\"}*4096)/(1024*1024)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Relay1",
-          "refId": "B"
-        },
-        {
-          "exemplar": true,
-          "expr": "(cardano_node_metrics_Mem_resident_int{alias=\"relaynode2\"}*4096)/(1024*1024)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Relay2",
-          "refId": "C"
-        },
-        {
-          "exemplar": true,
-          "expr": "(cardano_node_metrics_Mem_resident_int{alias=\"relaynode3\"}*4096)/(1024*1024)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Relay3",
-          "refId": "D"
-        },
-        {
-          "exemplar": true,
-          "expr": "(cardano_node_metrics_Mem_resident_int{alias=\"relaynode4\"}*4096)/(1024*1024)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Relay4",
-          "refId": "E"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "RSS (allocated memory in RAM)",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:2022",
-          "decimals": 2,
-          "format": "decmbytes",
-          "label": "",
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "$$hashKey": "object:2023",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
     }
   ],
   "refresh": "30s",
@@ -4507,7 +4367,7 @@
     "list": []
   },
   "time": {
-    "from": "now-12h",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
@@ -4537,5 +4397,5 @@
   "timezone": "",
   "title": "SNSKY Pool",
   "uid": "POXybbg7k",
-  "version": 18
+  "version": 32
 }
