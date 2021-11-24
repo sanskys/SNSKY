@@ -56,7 +56,7 @@
         "showDate": true
       },
       "gridPos": {
-        "h": 3,
+        "h": 4,
         "w": 4,
         "x": 0,
         "y": 0
@@ -150,7 +150,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 3,
+        "h": 4,
         "w": 4,
         "x": 4,
         "y": 0
@@ -540,10 +540,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 2,
+        "h": 3,
         "w": 4,
         "x": 0,
-        "y": 3
+        "y": 4
       },
       "id": 144,
       "options": {
@@ -603,10 +603,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 2,
+        "h": 3,
         "w": 4,
         "x": 4,
-        "y": 3
+        "y": 4
       },
       "id": 154,
       "options": {
@@ -1022,10 +1022,10 @@
         ]
       },
       "gridPos": {
-        "h": 2,
+        "h": 3,
         "w": 4,
         "x": 0,
-        "y": 5
+        "y": 7
       },
       "id": 153,
       "options": {
@@ -1085,10 +1085,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 2,
+        "h": 3,
         "w": 4,
         "x": 4,
-        "y": 5
+        "y": 7
       },
       "id": 157,
       "options": {
@@ -1119,132 +1119,6 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Blocks Epoch",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "semi-dark-blue",
-                "value": null
-              },
-              {
-                "color": "#6ED0E0",
-                "value": 100000
-              },
-              {
-                "color": "dark-green",
-                "value": 1000000
-              }
-            ]
-          },
-          "unit": "locale"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 4,
-        "x": 0,
-        "y": 7
-      },
-      "id": 146,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "center",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "value"
-      },
-      "pluginVersion": "8.1.2",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "adapools_delegators",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Delegators",
-      "type": "stat"
-    },
-    {
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "light-orange",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 0
-              }
-            ]
-          },
-          "unit": "locale"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 2,
-        "w": 4,
-        "x": 4,
-        "y": 7
-      },
-      "id": 156,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "center",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "last"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.1.2",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "adapools_blocks_lifetime",
-          "interval": "",
-          "legendFormat": "",
-          "refId": "A"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Blocks Minted",
       "type": "stat"
     },
     {
@@ -1762,6 +1636,132 @@
     },
     {
       "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "semi-dark-blue",
+                "value": null
+              },
+              {
+                "color": "#6ED0E0",
+                "value": 100000
+              },
+              {
+                "color": "dark-green",
+                "value": 1000000
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 0,
+        "y": 10
+      },
+      "id": 146,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "value"
+      },
+      "pluginVersion": "8.1.2",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "adapools_delegators",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Delegators",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "light-orange",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 4,
+        "y": 10
+      },
+      "id": 156,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.1.2",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "adapools_blocks_lifetime",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Blocks Minted",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1791,7 +1791,7 @@
         "h": 2,
         "w": 4,
         "x": 0,
-        "y": 9
+        "y": 13
       },
       "id": 145,
       "options": {
@@ -1859,7 +1859,7 @@
         "h": 2,
         "w": 4,
         "x": 4,
-        "y": 9
+        "y": 13
       },
       "id": 148,
       "options": {
@@ -1891,68 +1891,6 @@
       "timeShift": null,
       "title": "PoolRank",
       "type": "stat"
-    },
-    {
-      "datasource": "pooldata.live",
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {
-            "align": "auto",
-            "displayMode": "auto"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "dark-green",
-                "value": null
-              },
-              {
-                "color": "#EAB839",
-                "value": 450
-              },
-              {
-                "color": "dark-orange",
-                "value": 800
-              },
-              {
-                "color": "dark-red",
-                "value": 900
-              }
-            ]
-          },
-          "unit": "locale"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 8,
-        "x": 0,
-        "y": 11
-      },
-      "id": 159,
-      "options": {
-        "showHeader": true
-      },
-      "pluginVersion": "8.1.2",
-      "targets": [
-        {
-          "data": "",
-          "refId": "A",
-          "target": "pool.live_delegators",
-          "type": "table"
-        }
-      ],
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Delegators",
-      "type": "table"
     },
     {
       "aliasColors": {},
@@ -4397,5 +4335,5 @@
   "timezone": "",
   "title": "SNSKY Pool",
   "uid": "POXybbg7k",
-  "version": 32
+  "version": 33
 }
