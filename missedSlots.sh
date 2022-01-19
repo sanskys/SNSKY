@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo zgrep -h "TraceStartLeadershipCheck" /var/log/syslog | awk '{print $3, $(NF)}' > missedSlots
 sed 's/[:,] */ /g' missedSlots > missedSlots1
-awk '{if (NF == 9) print $1":"$2":"$3, $(NF-2); else print $1":"$2":"$3, $(NF-6);}' missedSlots1 > missedSlots
+awk '{if (NF == 15) print $1":"$2":"$3, $(NF-2); else print $1":"$2":"$3, $(NF-6);}' missedSlots1 > missedSlots
 rm missedSlots1
 
 ((num = $(awk 'NR==1{print $NF}' missedSlots)))
