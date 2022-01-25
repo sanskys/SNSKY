@@ -1,0 +1,133 @@
+{
+  "id": 171,
+  "gridPos": {
+    "h": 6,
+    "w": 24,
+    "x": 0,
+    "y": 0
+  },
+  "type": "timeseries",
+  "title": "Leader Slots",
+  "transformations": [],
+  "datasource": {
+    "type": "datasource",
+    "uid": "-- Mixed --"
+  },
+  "pluginVersion": "8.1.2",
+  "timeFrom": "+24h",
+  "timeShift": "6h",
+  "links": [],
+  "fieldConfig": {
+    "defaults": {
+      "custom": {
+        "drawStyle": "bars",
+        "lineInterpolation": "linear",
+        "barAlignment": 0,
+        "lineWidth": 2,
+        "fillOpacity": 10,
+        "gradientMode": "opacity",
+        "spanNulls": true,
+        "showPoints": "never",
+        "pointSize": 5,
+        "stacking": {
+          "mode": "none",
+          "group": "A"
+        },
+        "axisPlacement": "auto",
+        "axisLabel": "",
+        "scaleDistribution": {
+          "type": "linear"
+        },
+        "hideFrom": {
+          "tooltip": false,
+          "viz": false,
+          "legend": false
+        },
+        "thresholdsStyle": {
+          "mode": "off"
+        }
+      },
+      "color": {
+        "mode": "palette-classic"
+      },
+      "thresholds": {
+        "mode": "absolute",
+        "steps": [
+          {
+            "color": "green",
+            "value": null
+          },
+          {
+            "color": "red",
+            "value": 80
+          }
+        ]
+      },
+      "mappings": [],
+      "links": [],
+      "unit": "locale"
+    },
+    "overrides": []
+  },
+  "hideTimeOverride": false,
+  "options": {
+    "tooltip": {
+      "mode": "multi"
+    },
+    "legend": {
+      "displayMode": "hidden",
+      "placement": "right",
+      "calcs": []
+    }
+  },
+  "targets": [
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
+      "exemplar": true,
+      "expr": "cardano_node_metrics_slotInEpoch_int{alias=\"block-producer-node\"}",
+      "hide": false,
+      "instant": false,
+      "interval": "",
+      "intervalFactor": 1,
+      "legendFormat": "Slot",
+      "refId": "A"
+    },
+    {
+      "datasource": {
+        "type": "marcusolsson-csv-datasource",
+        "uid": "A5bIq31nz"
+      },
+      "decimalSeparator": ".",
+      "delimiter": ",",
+      "experimental": {
+        "regex": true
+      },
+      "header": true,
+      "hide": false,
+      "ignoreUnknown": false,
+      "refId": "B",
+      "schema": [
+        {
+          "name": "Time",
+          "type": "time"
+        },
+        {
+          "name": "Slot",
+          "type": "number"
+        },
+        {
+          "name": "Height",
+          "type": "number"
+        },
+        {
+          "name": "No",
+          "type": "number"
+        }
+      ],
+      "skipRows": 0
+    }
+  ]
+}
