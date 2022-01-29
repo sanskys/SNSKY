@@ -10,8 +10,8 @@
   "title": "Leader Slots",
   "transformations": [],
   "datasource": {
-    "type": "datasource",
-    "uid": "-- Mixed --"
+    "uid": "-- Mixed --",
+    "type": "datasource"
   },
   "pluginVersion": "8.1.2",
   "timeFrom": "+24h",
@@ -22,12 +22,12 @@
       "custom": {
         "drawStyle": "bars",
         "lineInterpolation": "linear",
-        "barAlignment": 0,
+        "barAlignment": -1,
         "lineWidth": 2,
         "fillOpacity": 10,
         "gradientMode": "opacity",
         "spanNulls": true,
-        "showPoints": "never",
+        "showPoints": "always",
         "pointSize": 5,
         "stacking": {
           "mode": "none",
@@ -69,7 +69,6 @@
     },
     "overrides": []
   },
-  "hideTimeOverride": false,
   "options": {
     "tooltip": {
       "mode": "multi"
@@ -82,17 +81,17 @@
   },
   "targets": [
     {
+      "expr": "cardano_node_metrics_slotNum_int{alias=\"block-producer-node\"}",
+      "legendFormat": "Slot",
+      "interval": "",
+      "exemplar": true,
       "datasource": {
         "type": "prometheus",
         "uid": "PMhK85R7z"
       },
-      "exemplar": true,
-      "expr": "cardano_node_metrics_slotInEpoch_int{alias=\"block-producer-node\"}",
       "hide": false,
       "instant": false,
-      "interval": "",
       "intervalFactor": 1,
-      "legendFormat": "Slot",
       "refId": "A"
     },
     {
@@ -119,15 +118,12 @@
           "type": "number"
         },
         {
-          "name": "Height",
-          "type": "number"
-        },
-        {
           "name": "No",
           "type": "number"
         }
       ],
       "skipRows": 0
     }
-  ]
+  ],
+  "hideTimeOverride": false
 }
