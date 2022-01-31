@@ -1,7 +1,7 @@
 {
   "id": 171,
   "gridPos": {
-    "h": 6,
+    "h": 5,
     "w": 24,
     "x": 0,
     "y": 0
@@ -13,7 +13,7 @@
     "uid": "-- Mixed --",
     "type": "datasource"
   },
-  "pluginVersion": "8.1.2",
+  "pluginVersion": "8.3.4",
   "timeFrom": "+24h",
   "timeShift": "6h",
   "links": [],
@@ -67,7 +67,40 @@
       "links": [],
       "unit": "locale"
     },
-    "overrides": []
+    "overrides": [
+      {
+        "matcher": {
+          "id": "byName",
+          "options": "slots.csv No"
+        },
+        "properties": [
+          {
+            "id": "custom.axisPlacement",
+            "value": "right"
+          },
+          {
+            "id": "custom.drawStyle",
+            "value": "points"
+          },
+          {
+            "id": "displayName",
+            "value": "No"
+          }
+        ]
+      },
+      {
+        "matcher": {
+          "id": "byName",
+          "options": "slots.csv Slot"
+        },
+        "properties": [
+          {
+            "id": "displayName",
+            "value": "Leader Slot"
+          }
+        ]
+      }
+    ]
   },
   "options": {
     "tooltip": {
@@ -81,17 +114,17 @@
   },
   "targets": [
     {
-      "expr": "cardano_node_metrics_slotNum_int{alias=\"block-producer-node\"}",
-      "legendFormat": "Slot",
-      "interval": "",
-      "exemplar": true,
       "datasource": {
         "type": "prometheus",
         "uid": "PMhK85R7z"
       },
+      "exemplar": true,
+      "expr": "cardano_node_metrics_slotNum_int{alias=\"block-producer-node\"}",
       "hide": false,
       "instant": false,
+      "interval": "",
       "intervalFactor": 1,
+      "legendFormat": "Slot",
       "refId": "A"
     },
     {
