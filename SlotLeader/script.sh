@@ -2,7 +2,7 @@
 
 #cardano-cli leadership query
 POOLID=$(cat $NODE_HOME/stakepoolid.txt)
-echo "Leadership Query Starting for POOL - $MYPOOLID"
+echo "Leadership Query Starting for POOL - $POOLID"
 cardano-cli query leadership-schedule --mainnet --stake-pool-id $POOLID --vrf-signing-key-file ${NODE_HOME}/vrf.skey --genesis ${NODE_HOME}/mainnet-shelley-genesis.json --next > leadership.txt
 echo "Leadership Query - Finished"
 
