@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -20,35 +23,38 @@
   },
   "description": "SNSKY Pool Monitor",
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 4,
+  "id": 11,
   "links": [
     {
       "icon": "external link",
       "tags": [],
       "title": "SNSKY Homepage",
       "type": "link",
-      "url": "https://sanskys.de"
+      "url": "https://sanskys.github.io/"
     },
     {
       "icon": "external link",
       "tags": [],
-      "title": "Details on ADAPools",
+      "title": "Details on Cexplorer",
       "type": "link",
-      "url": "https://adapools.org/pool/075578defd7ee97cbeaa2937e5819099cb3835ac9f9c8b1a2c3a3578"
+      "url": "https://cexplorer.io/pool/pool1qa2h3hha0m5he0429ym7tqvsn89nsddvn7wgkx3v8g6hsstdzc0/"
     }
   ],
+  "liveNow": false,
   "panels": [
     {
       "bgColor": "rgb(7, 22, 36)",
       "clockType": "24 hour",
       "countdownSettings": {
-        "customFormat": null,
         "endCountdownTime": "2020-05-15T12:54:00.000Z",
         "endText": "00:00:00"
       },
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "dateSettings": {
         "dateFormat": "MMM-DD-YYYY",
         "fontSize": "20px",
@@ -94,13 +100,11 @@
       "refreshSettings": {
         "syncWithDashboard": true
       },
-      "timeFrom": null,
       "timeSettings": {
         "customFormat": "HH:mm:ss",
         "fontSize": "60px",
         "fontWeight": "normal"
       },
-      "timeShift": null,
       "timezone": "America/New_York",
       "timezoneSettings": {
         "fontSize": "12px",
@@ -111,8 +115,10 @@
       "type": "grafana-clock-panel"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -156,7 +162,6 @@
         "y": 0
       },
       "id": 151,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -174,7 +179,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "exemplar": true,
@@ -195,15 +200,15 @@
           "refId": "B"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "KES Key Rotation",
       "transformations": [],
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "Remaining KES DAYS before we need to rotate keys",
       "fieldConfig": {
         "defaults": {
@@ -257,7 +262,6 @@
         "y": 0
       },
       "id": 19,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -273,7 +277,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "exemplar": true,
@@ -285,15 +289,15 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "KES Key : Days Left",
       "transformations": [],
       "type": "gauge"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -333,7 +337,6 @@
         "y": 0
       },
       "id": 57,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -349,25 +352,29 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PMhK85R7z"
+          },
           "exemplar": true,
-          "expr": "(cardano_node_metrics_Forge_node_not_leader_int{alias=\"block-producer-node\"} / cardano_node_metrics_Forge_forge_about_to_lead_int{alias=\"block-producer-node\"} * 100)",
+          "expr": "(cardano_node_metrics_Forge_node_not_leader_int{alias=\"block-producer-node\"} + cardano_node_metrics_Forge_adopted_int{alias=\"block-producer-node\"}) / cardano_node_metrics_Forge_forge_about_to_lead_int{alias=\"block-producer-node\"} * 100",
           "hide": false,
           "interval": "",
           "legendFormat": "{{none}}",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Pool Performance",
       "type": "gauge"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "Slot height in current epoch (taken from Core node)",
       "fieldConfig": {
         "defaults": {
@@ -409,7 +416,6 @@
         "y": 0
       },
       "id": 149,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -425,7 +431,7 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "exemplar": true,
@@ -437,15 +443,15 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Current Epoch Progress",
       "transformations": [],
       "type": "gauge"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "fieldConfig": {
         "defaults": {
           "mappings": [
@@ -479,7 +485,6 @@
         "y": 0
       },
       "id": 3,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -502,7 +507,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "exemplar": true,
@@ -514,14 +519,15 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Epoch",
       "transformations": [],
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -561,23 +567,28 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PMhK85R7z"
+          },
           "exemplar": true,
-          "expr": "adapools_pledged/1000000",
+          "expr": "cexplorer_pledge/1000000",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Pledged",
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "Next Epoch",
       "fieldConfig": {
         "defaults": {
@@ -624,7 +635,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "exemplar": true,
@@ -634,13 +645,14 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Leader Slots",
       "type": "stat"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -682,6 +694,8 @@
       "interval": "",
       "options": {
         "displayMode": "lcd",
+        "minVizHeight": 10,
+        "minVizWidth": 0,
         "orientation": "horizontal",
         "reduceOptions": {
           "calcs": [
@@ -693,7 +707,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "exemplar": true,
@@ -730,14 +744,14 @@
           "refId": "E"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Core Node System Health",
       "type": "bargauge"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "Connected peers to/from Core Node",
       "fieldConfig": {
         "defaults": {
@@ -781,7 +795,6 @@
         "y": 4
       },
       "id": 98,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -799,7 +812,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "exemplar": true,
@@ -817,8 +830,10 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -854,7 +869,6 @@
         "y": 4
       },
       "id": 69,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -877,7 +891,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "expr": "cardano_node_metrics_txsProcessedNum_int{alias=\"block-producer-node\"}",
@@ -888,14 +902,14 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Core TX's processed",
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "Core node uptime",
       "fieldConfig": {
         "defaults": {
@@ -940,7 +954,6 @@
       },
       "hideTimeOverride": true,
       "id": 45,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -963,7 +976,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "exemplar": true,
@@ -982,7 +995,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1043,23 +1059,28 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PMhK85R7z"
+          },
           "exemplar": true,
-          "expr": "adapools_active_stake/1000000",
+          "expr": "round(cexplorer_stake_active/10000000)",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Activestake",
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1106,23 +1127,28 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PMhK85R7z"
+          },
           "exemplar": true,
-          "expr": "adapools_blocks_epoch",
+          "expr": "cexplorer_blocks_epoch",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Blocks Epoch",
       "type": "stat"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1164,6 +1190,8 @@
       "interval": "",
       "options": {
         "displayMode": "lcd",
+        "minVizHeight": 10,
+        "minVizWidth": 0,
         "orientation": "horizontal",
         "reduceOptions": {
           "calcs": [
@@ -1175,7 +1203,7 @@
         "showUnfilled": true,
         "text": {}
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "exemplar": true,
@@ -1308,14 +1336,14 @@
           "refId": "P"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Relay Node System Health",
       "type": "bargauge"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "Connected peers to/from Relay 1",
       "fieldConfig": {
         "defaults": {
@@ -1359,7 +1387,6 @@
         "y": 7
       },
       "id": 142,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -1377,7 +1404,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "exemplar": true,
@@ -1420,8 +1447,10 @@
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1457,7 +1486,6 @@
         "y": 7
       },
       "id": 70,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -1480,7 +1508,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "exemplar": true,
@@ -1517,14 +1545,14 @@
           "refId": "D"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Relay TX's processed",
       "type": "stat"
     },
     {
-      "cacheTimeout": null,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "Relay node 1 uptime",
       "fieldConfig": {
         "defaults": {
@@ -1569,7 +1597,6 @@
       },
       "hideTimeOverride": true,
       "id": 89,
-      "interval": null,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -1592,7 +1619,7 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
           "exemplar": true,
@@ -1635,7 +1662,10 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "fieldConfig": {
         "defaults": {
           "mappings": [],
@@ -1682,23 +1712,28 @@
         "text": {},
         "textMode": "value"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PMhK85R7z"
+          },
           "exemplar": true,
-          "expr": "adapools_delegators",
+          "expr": "cexplorer_delegators",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Delegators",
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1745,23 +1780,28 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PMhK85R7z"
+          },
           "exemplar": true,
-          "expr": "adapools_blocks_lifetime",
+          "expr": "cexplorer_blocks_lifetime",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Blocks Minted",
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1809,23 +1849,28 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PMhK85R7z"
+          },
           "exemplar": true,
-          "expr": "adapools_roa",
+          "expr": "cexplorer_roa_lifetime",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Rewards",
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1877,28 +1922,32 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PMhK85R7z"
+          },
           "exemplar": true,
-          "expr": "adapools_rank",
+          "expr": "cexplorer_position",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "PoolRank",
       "type": "stat"
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "decimals": 2,
       "fieldConfig": {
         "defaults": {
@@ -1935,7 +1984,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1985,9 +2034,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Chain Density",
       "tooltip": {
         "shared": true,
@@ -1997,9 +2044,7 @@
       "transformations": [],
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2007,34 +2052,29 @@
         {
           "$$hashKey": "object:145",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:146",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "decimals": 0,
       "description": "",
       "fieldConfig": {
@@ -2072,7 +2112,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2082,7 +2122,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "Prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PMhK85R7z"
+          },
           "exemplar": true,
           "expr": "cardano_node_metrics_blockNum_int{alias=\"block-producer-node\"}",
           "interval": "",
@@ -2090,7 +2133,10 @@
           "refId": "A"
         },
         {
-          "datasource": "Prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PMhK85R7z"
+          },
           "exemplar": true,
           "expr": "cardano_node_metrics_blockNum_int{alias=\"relaynode1\"}",
           "interval": "",
@@ -2123,9 +2169,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Block height",
       "tooltip": {
         "shared": true,
@@ -2134,9 +2178,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2146,8 +2188,6 @@
           "format": "locale",
           "label": "",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
@@ -2155,23 +2195,22 @@
           "format": "short",
           "label": "JWS_S1_Relay1",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "aliasColors": {},
       "bars": false,
-      "cacheTimeout": null,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "decimals": 0,
       "fieldConfig": {
         "defaults": {
@@ -2208,7 +2247,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2218,7 +2257,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "Prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PMhK85R7z"
+          },
           "exemplar": true,
           "expr": "cardano_node_metrics_slotNum_int{alias=\"block-producer-node\"}",
           "hide": false,
@@ -2261,9 +2303,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Slot Height",
       "tooltip": {
         "shared": true,
@@ -2272,9 +2312,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2284,8 +2322,6 @@
           "format": "locale",
           "label": "",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
@@ -2293,14 +2329,11 @@
           "format": "short",
           "label": "JWS_S1_Relay1",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2308,7 +2341,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "fieldConfig": {
         "defaults": {
           "links": [],
@@ -2345,11 +2381,10 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "repeat": null,
       "seriesOverrides": [
         {
           "$$hashKey": "object:1050",
@@ -2406,9 +2441,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "System Load (Core Node)",
       "tooltip": {
         "shared": true,
@@ -2417,9 +2450,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2430,23 +2461,18 @@
           "format": "%",
           "label": "Load",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:1078",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2454,7 +2480,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "fieldConfig": {
         "defaults": {
           "links": [],
@@ -2491,7 +2520,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2621,9 +2650,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "System Load (Relay Node)",
       "tooltip": {
         "shared": true,
@@ -2632,9 +2659,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2645,23 +2670,18 @@
           "format": "%",
           "label": "Load",
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:970",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2669,7 +2689,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2705,7 +2728,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2773,9 +2796,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Time Synchronization (Core Node)",
       "tooltip": {
         "shared": true,
@@ -2784,9 +2805,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2796,23 +2815,17 @@
           "format": "s",
           "label": "Seconds",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:596",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2820,7 +2833,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -2856,7 +2872,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -2924,9 +2940,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Time Synchronization (Relay1 Node)",
       "tooltip": {
         "shared": true,
@@ -2935,9 +2949,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -2947,23 +2959,17 @@
           "format": "s",
           "label": "Seconds",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:711",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -2971,7 +2977,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -3007,7 +3016,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -3075,9 +3084,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Time Synchronization (Relay2 Node)",
       "tooltip": {
         "shared": true,
@@ -3086,9 +3093,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -3098,23 +3103,17 @@
           "format": "s",
           "label": "Seconds",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:711",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3122,7 +3121,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "fieldConfig": {
         "defaults": {
           "links": []
@@ -3155,7 +3157,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3205,9 +3207,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Block Sync Speed (blocks / min)",
       "tooltip": {
         "shared": true,
@@ -3216,9 +3216,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -3227,25 +3225,18 @@
           "$$hashKey": "object:387",
           "decimals": 1,
           "format": "none",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:388",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3253,7 +3244,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -3288,7 +3282,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3339,9 +3333,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Memory Utilization ",
       "tooltip": {
         "shared": true,
@@ -3350,9 +3342,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -3361,25 +3351,18 @@
           "$$hashKey": "object:807",
           "decimals": 1,
           "format": "%",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:808",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3387,7 +3370,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "Counts only memory that is physically free (from OS, in MBytes)",
       "fieldConfig": {
         "defaults": {
@@ -3421,7 +3407,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3471,9 +3457,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Peak Memory Allocated",
       "tooltip": {
         "shared": true,
@@ -3482,9 +3466,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -3493,25 +3475,18 @@
           "$$hashKey": "object:985",
           "decimals": 2,
           "format": "decmbytes",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:986",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3519,7 +3494,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "current",
       "fieldConfig": {
         "defaults": {
@@ -3553,7 +3531,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3563,7 +3541,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "Prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PMhK85R7z"
+          },
           "exemplar": true,
           "expr": "cardano_node_metrics_txsInMempool_int{alias=\"block-producer-node\"}",
           "interval": "",
@@ -3604,9 +3585,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Mempool Transactions",
       "tooltip": {
         "shared": true,
@@ -3615,9 +3594,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -3626,25 +3603,18 @@
           "$$hashKey": "object:1163",
           "decimals": 0,
           "format": "tx",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:1164",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3652,7 +3622,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "Amount of live data, MBytes",
       "fieldConfig": {
         "defaults": {
@@ -3686,7 +3659,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3696,7 +3669,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "Prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PMhK85R7z"
+          },
           "exemplar": true,
           "expr": "rts_gc_max_bytes_used{alias=\"block-producer-node\"} /(1024*1024)",
           "interval": "",
@@ -3721,9 +3697,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Max \"Residency\"",
       "tooltip": {
         "shared": true,
@@ -3732,9 +3706,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -3742,25 +3714,18 @@
         {
           "$$hashKey": "object:1682",
           "format": "decmbytes",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:1683",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3768,7 +3733,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -3802,7 +3770,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3812,7 +3780,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "Prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PMhK85R7z"
+          },
           "exemplar": true,
           "expr": "rts_gc_current_bytes_used{alias=\"block-producer-node\"}/(1024*1024)",
           "interval": "",
@@ -3853,9 +3824,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Current \"Residency\" (amount of live data)",
       "tooltip": {
         "shared": true,
@@ -3864,9 +3833,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -3874,25 +3841,18 @@
         {
           "$$hashKey": "object:1334",
           "format": "decmbytes",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:1335",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -3900,7 +3860,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "decimals": 0,
       "description": "",
       "fieldConfig": {
@@ -3935,7 +3898,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -3945,7 +3908,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "Prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PMhK85R7z"
+          },
           "exemplar": true,
           "expr": "(cardano_node_metrics_Mem_resident_int{alias=\"block-producer-node\"}*4096)/(1024*1024)",
           "interval": "",
@@ -3986,9 +3952,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "RSS (allocated memory in RAM)",
       "tooltip": {
         "shared": true,
@@ -3997,9 +3961,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -4010,23 +3972,17 @@
           "format": "decmbytes",
           "label": "",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:2023",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -4034,7 +3990,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "1 hour rolling window",
       "fieldConfig": {
         "defaults": {
@@ -4069,7 +4028,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -4119,9 +4078,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Aggregate Data Transfer",
       "tooltip": {
         "shared": true,
@@ -4130,9 +4087,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -4143,24 +4098,18 @@
           "format": "decbytes",
           "label": "",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:1513",
-          "decimals": null,
           "format": "short",
           "label": "",
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -4168,7 +4117,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PMhK85R7z"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -4203,7 +4155,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "8.1.2",
+      "pluginVersion": "8.5.2",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -4213,7 +4165,10 @@
       "steppedLine": false,
       "targets": [
         {
-          "datasource": "Prometheus",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PMhK85R7z"
+          },
           "exemplar": true,
           "expr": "node_filefd_allocated{alias=\"block-producer-node\"}",
           "interval": "",
@@ -4254,9 +4209,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "File Descriptors",
       "tooltip": {
         "shared": true,
@@ -4265,9 +4218,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -4275,37 +4226,30 @@
         {
           "$$hashKey": "object:1852",
           "format": "none",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:1853",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     }
   ],
-  "refresh": "30s",
-  "schemaVersion": 30,
+  "refresh": "10s",
+  "schemaVersion": 36,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": []
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-3h",
     "to": "now"
   },
   "timepicker": {
@@ -4334,6 +4278,7 @@
   },
   "timezone": "",
   "title": "SNSKY Pool",
-  "uid": "POXybbg7k",
-  "version": 33
+  "uid": "SNSKYPOOL",
+  "version": 5,
+  "weekStart": ""
 }
