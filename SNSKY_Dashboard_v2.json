@@ -808,7 +808,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "cardano_node_metrics_connectedPeers_int{alias=\"block-producer-node\"}",
+          "expr": "cardano_node_metrics_peers_connectedPeers_int{alias=\"block-producer-node\"}",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -1400,7 +1400,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "cardano_node_metrics_connectedPeers_int{alias=\"relaynode1\"}",
+          "expr": "cardano_node_metrics_peers_connectedPeers_int{alias=\"relaynode1\"}",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -1411,7 +1411,7 @@
         },
         {
           "exemplar": true,
-          "expr": "cardano_node_metrics_connectedPeers_int{alias=\"relaynode2\"}",
+          "expr": "cardano_node_metrics_peers_connectedPeers_int{alias=\"relaynode2\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "Relay2",
@@ -1419,7 +1419,7 @@
         },
         {
           "exemplar": true,
-          "expr": "cardano_node_metrics_connectedPeers_int{alias=\"relaynode3\"}",
+          "expr": "cardano_node_metrics_peers_connectedPeers_int{alias=\"relaynode3\"}",
           "hide": false,
           "instant": false,
           "interval": "",
@@ -1428,7 +1428,7 @@
         },
         {
           "exemplar": true,
-          "expr": "cardano_node_metrics_connectedPeers_int{alias=\"relaynode4\"}",
+          "expr": "cardano_node_metrics_peers_connectedPeers_int{alias=\"relaynode4\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "Relay4",
